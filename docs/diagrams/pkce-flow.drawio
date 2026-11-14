@@ -1,0 +1,67 @@
+<mxfile host="Electron">
+  <diagram id="pkce-flow" name="PKCE-Flow">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="720" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="ll_spa" value="&lt;b&gt;SPA + Browser&lt;/b&gt;&lt;br&gt;(public client — no secret)" style="shape=umlLifeline;perimeter=lifelinePerimeter;html=1;container=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="60" y="40" width="180" height="600" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_idp" value="&lt;b&gt;Authorization Server&lt;/b&gt;&lt;br&gt;(IdP)" style="shape=umlLifeline;perimeter=lifelinePerimeter;html=1;container=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="460" y="40" width="180" height="600" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_api" value="&lt;b&gt;Resource API&lt;/b&gt;" style="shape=umlLifeline;perimeter=lifelinePerimeter;html=1;container=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="860" y="40" width="180" height="600" as="geometry"/>
+        </mxCell>
+        <mxCell id="note1" value="① generate &lt;b&gt;code_verifier&lt;/b&gt; (random secret)&lt;br&gt;+ &lt;b&gt;code_challenge&lt;/b&gt; = S256(verifier)" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="15" y="120" width="270" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="m2" value="② GET /authorize?client_id&amp;amp;redirect_uri&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;amp;code_challenge&amp;amp;state" style="html=1;endArrow=block;endSize=10;strokeWidth=1.5;labelBackgroundColor=#ffffff;fontSize=10" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="150" y="200" as="sourcePoint"/>
+            <mxPoint x="550" y="200" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="note3" value="③ user logs in&lt;br&gt;+ grants consent" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="585" y="230" width="200" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="m4" value="④ 302 → /callback?code&amp;amp;state" style="html=1;endArrow=block;endSize=10;strokeWidth=1.5;labelBackgroundColor=#ffffff;fontSize=10;dashed=1" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="300" as="sourcePoint"/>
+            <mxPoint x="150" y="300" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="note4" value="SPA: verify &lt;b&gt;state&lt;/b&gt;&lt;br&gt;(CSRF check on redirect)" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="15" y="330" width="240" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="m5" value="⑤ POST /token&lt;br&gt;{ code, code_verifier, client_id }" style="html=1;endArrow=block;endSize=10;strokeWidth=1.5;labelBackgroundColor=#ffffff;fontSize=10" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="150" y="420" as="sourcePoint"/>
+            <mxPoint x="550" y="420" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="note6" value="IdP: S256(code_verifier)&lt;br&gt;== stored code_challenge ?" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="585" y="445" width="220" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="m7" value="⑥ access_token (+ id_token)&lt;br&gt;code is worthless without verifier" style="html=1;endArrow=block;endSize=10;strokeWidth=1.5;labelBackgroundColor=#ffffff;fontSize=10;dashed=1" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="515" as="sourcePoint"/>
+            <mxPoint x="150" y="515" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m8" value="⑦ GET /orders&lt;br&gt;Authorization: Bearer access_token" style="html=1;endArrow=block;endSize=10;strokeWidth=1.5;labelBackgroundColor=#ffffff;fontSize=10" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="150" y="565" as="sourcePoint"/>
+            <mxPoint x="950" y="565" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m9" value="⑧ 200 + scoped data&lt;br&gt;signature · aud · scope validated" style="html=1;endArrow=block;endSize=10;strokeWidth=1.5;labelBackgroundColor=#ffffff;fontSize=10;dashed=1" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="950" y="615" as="sourcePoint"/>
+            <mxPoint x="150" y="615" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

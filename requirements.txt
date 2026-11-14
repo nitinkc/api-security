@@ -1,0 +1,2 @@
+mkdocs-material==9.7.0
+mkdocs-quiz==1.7.1

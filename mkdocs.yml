@@ -1,0 +1,99 @@
+site_name: API Security — Authentication
+site_description: A language-agnostic field guide to API authentication schemes
+docs_dir: docs
+site_url: https://nitinkc.github.io/api-security/
+repo_url: https://github.com/nitinkc/api-security.git
+
+theme:
+  name: material
+  icon:
+    logo: material/shield-key
+  palette:
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - navigation.indexes
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.copy
+    - content.code.annotate
+    - content.action.view
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - md_in_html
+  - footnotes
+  - tables
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets:
+      auto_append:
+        - includes/abbreviations.md
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+nav:
+  - Home: index.md
+  - Authentication Schemes:
+      - authentication/index.md
+      - Basic Auth: authentication/basic-auth.md
+      - Token Auth: authentication/token-auth.md
+      - JWT: authentication/jwt.md
+      - OAuth 2.0: authentication/oauth.md
+      - Session Auth: authentication/session-auth.md
+  - Comparison & Selection: comparison.md
+  - Security Best Practices: best-practices.md
+  - Standards & References: references.md
+  - Glossary: glossary.md
+  - Knowledge Check: quiz.md
+
+plugins:
+  - search
+  - mkdocs_quiz:
+      show_progress: true
+      auto_submit: true
+      shuffle_answers: true
+      auto_number: true
+
+extra:
+  generator: false
