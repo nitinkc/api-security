@@ -1,0 +1,103 @@
+<mxfile host="Electron">
+  <diagram id="schemes-overview" name="Schemes-Overview">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1000" pageHeight="480" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="rt1" value="&lt;b&gt;what the client sends&lt;/b&gt;" style="text;html=1;fontSize=11;align=right" vertex="1" parent="1">
+          <mxGeometry x="-40" y="135" width="160" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="rt2" value="&lt;b&gt;how the server verifies&lt;/b&gt;" style="text;html=1;fontSize=11;align=right" vertex="1" parent="1">
+          <mxGeometry x="-40" y="240" width="160" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="rt3" value="&lt;b&gt;the credential dies by&lt;/b&gt;" style="text;html=1;fontSize=11;align=right" vertex="1" parent="1">
+          <mxGeometry x="-40" y="350" width="160" height="30" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="h1" value="&lt;b&gt;BASIC AUTH&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="140" y="40" width="160" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="h2" value="&lt;b&gt;API KEY / TOKEN&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="320" y="40" width="160" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="h3" value="&lt;b&gt;JWT&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="500" y="40" width="160" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="h4" value="&lt;b&gt;OAUTH 2.0&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="680" y="40" width="160" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="h5" value="&lt;b&gt;SESSION&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="860" y="40" width="160" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="w1" value="Authorization: Basic&lt;br&gt;base64(user:pass)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;fontFamily=Courier New" vertex="1" parent="1">
+          <mxGeometry x="140" y="120" width="160" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="w2" value="X-API-Key: sk_live_…&lt;br&gt;or Authorization: Bearer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;fontFamily=Courier New" vertex="1" parent="1">
+          <mxGeometry x="320" y="120" width="160" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="w3" value="Authorization: Bearer&lt;br&gt;eyJhbGciOi…&lt;br&gt;(self-contained)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;fontFamily=Courier New" vertex="1" parent="1">
+          <mxGeometry x="500" y="120" width="160" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="w4" value="Authorization: Bearer&lt;br&gt;access_token&lt;br&gt;(+ refresh flow)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;fontFamily=Courier New" vertex="1" parent="1">
+          <mxGeometry x="680" y="120" width="160" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="w5" value="Cookie: session=aX92…&lt;br&gt;(auto-attached&lt;br&gt;by the browser)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;fontFamily=Courier New" vertex="1" parent="1">
+          <mxGeometry x="860" y="120" width="160" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="v1" value="verify password hash&lt;br&gt;— every request" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="140" y="220" width="160" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="v2" value="token-store&lt;br&gt;lookup" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="320" y="220" width="160" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="v3" value="signature only&lt;br&gt;— no lookup" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="500" y="220" width="160" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="v4" value="signature or&lt;br&gt;introspection" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="680" y="220" width="160" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="v5" value="session-store&lt;br&gt;lookup" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="860" y="220" width="160" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="d1" value="password change" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="140" y="310" width="160" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="d2" value="delete / expire&lt;br&gt;the key" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="320" y="310" width="160" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="d3" value="exp claim&lt;br&gt;(or denylist)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="500" y="310" width="160" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="d4" value="revocation&lt;br&gt;+ exp" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="680" y="310" width="160" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="d5" value="logout / TTL —&lt;br&gt;instant" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="860" y="310" width="160" height="55" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="c1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=1;dashed=1" edge="1" source="h1" target="w1" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="c2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=1;dashed=1" edge="1" source="w1" target="v1" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="c3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=1;dashed=1" edge="1" source="v1" target="d1" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="c4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=1;dashed=1" edge="1" source="h2" target="w2" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="c5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=1;dashed=1" edge="1" source="w2" target="v2" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="c6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=1;dashed=1" edge="1" source="v2" target="d2" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="c7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=1;dashed=1" edge="1" source="h3" target="w3" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="c8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=1;dashed=1" edge="1" source="w3" target="v3" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="c9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=1;dashed=1" edge="1" source="v3" target="d3" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="c10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=1;dashed=1" edge="1" source="h4" target="w4" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="c11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=1;dashed=1" edge="1" source="w4" target="v4" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="c12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=1;dashed=1" edge="1" source="v4" target="d4" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="c13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=1;dashed=1" edge="1" source="h5" target="w5" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="c14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=1;dashed=1" edge="1" source="w5" target="v5" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="c15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=1;dashed=1" edge="1" source="v5" target="d5" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="take" value="&lt;b&gt;The pattern to remember:&lt;/b&gt; every scheme answers the same three questions —&lt;br&gt;what crosses the wire, how the server checks it, and how it dies." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="240" y="400" width="600" height="55" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

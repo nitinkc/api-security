@@ -21,23 +21,9 @@ Two common flavors:
 
 ## How it works
 
-```mermaid
-sequenceDiagram
-    participant C as Client
-    participant S as API Server
-    participant D as Token Store
+![Token lifecycle — issue once, present on every request, verify by store lookup; expiry and revocation are what make it safe](../images/token-lifecycle.svg){ loading=lazy }
 
-    Note over C,S: One-time issuance (login, portal, provisioning)
-    C->>S: POST /auth/token (credentials / mTLS / OAuth grant)
-    S->>D: Store hash(token) → {client, scopes, expiry}
-    S-->>C: { "token": "sk_live_9f3c..." }
-
-    Note over C,S: Every subsequent request
-    C->>S: GET /api/resource<br>Authorization: Bearer sk_live_9f3c...
-    S->>D: Lookup hash(token)
-    D-->>S: {client: "billing-svc", scopes: [...], expires: ...}
-    S-->>C: 200 OK
-```
+*Editable source: `docs/diagrams/token-lifecycle.drawio`*
 
 On the wire:
 

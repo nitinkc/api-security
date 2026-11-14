@@ -22,6 +22,10 @@ use or avoid it.
 | [OAuth 2.0](authentication/oauth.md) | Access token issued via grant flows | Depends on token type | Revocation endpoint / TTL | Delegated access, 3rd-party integration |
 | [Session Auth](authentication/session-auth.md) | Session ID cookie | Yes (server store) | Destroy session | Server-rendered web apps |
 
+![The five schemes at a glance — what crosses the wire, how the server verifies it, and how the credential dies](images/schemes-overview.svg){ loading=lazy }
+
+*Editable source: `docs/diagrams/schemes-overview.drawio`*
+
 ## How the guide is organized
 
 <div class="grid cards" markdown>

@@ -14,18 +14,9 @@ username and password — joined by a colon and Base64-encoded — in the
 
 ## How it works
 
-```mermaid
-sequenceDiagram
-    participant C as Client
-    participant S as Server
+![Basic Auth challenge-response — 401 + WWW-Authenticate, base64-encoded credentials on every request, and why TLS is non-negotiable](../images/basic-auth-flow.svg){ loading=lazy }
 
-    C->>S: GET /api/resource
-    S-->>C: 401 Unauthorized<br>WWW-Authenticate: Basic realm="api"
-    Note over C: prompt / collect credentials
-    C->>S: GET /api/resource<br>Authorization: Basic YWxpY2U6czNjcmV0
-    S->>S: Base64-decode → verify against user store
-    S-->>C: 200 OK
-```
+*Editable source: `docs/diagrams/basic-auth-flow.drawio`*
 
 On the wire:
 

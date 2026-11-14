@@ -1,0 +1,89 @@
+<mxfile host="Electron">
+  <diagram id="session-csrf" name="Session-CSRF">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1080" pageHeight="720" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="panelA" value="&lt;b&gt;① SESSION LIFECYCLE&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666666;fontSize=12;verticalAlign=top;spacingTop=6" vertex="1" parent="1">
+          <mxGeometry x="20" y="20" width="1040" height="300" as="geometry"/>
+        </mxCell>
+        <mxCell id="panelB" value="&lt;b&gt;② THE CSRF ATTACK — why SameSite matters&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666666;fontSize=12;verticalAlign=top;spacingTop=6" vertex="1" parent="1">
+          <mxGeometry x="20" y="340" width="1040" height="360" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ll_b" value="&lt;b&gt;Browser&lt;/b&gt;" style="shape=umlLifeline;perimeter=lifelinePerimeter;html=1;container=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="60" y="55" width="160" height="255" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_s" value="&lt;b&gt;Server&lt;/b&gt;" style="shape=umlLifeline;perimeter=lifelinePerimeter;html=1;container=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="460" y="55" width="160" height="255" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_d" value="&lt;b&gt;Session Store&lt;/b&gt;&lt;br&gt;(Redis / DB)" style="shape=umlLifeline;perimeter=lifelinePerimeter;html=1;container=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="850" y="55" width="170" height="255" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="a1" value="① POST /login {user, pass}" style="html=1;endArrow=block;endSize=10;strokeWidth=1.5;labelBackgroundColor=#ffffff;fontSize=10" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="140" y="105" as="sourcePoint"/>
+            <mxPoint x="540" y="105" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a2" value="② CREATE {id: aX92…, user: alice, ttl: 30m}" style="html=1;endArrow=block;endSize=10;strokeWidth=1.5;labelBackgroundColor=#ffffff;fontSize=10" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="540" y="155" as="sourcePoint"/>
+            <mxPoint x="935" y="155" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a3" value="③ Set-Cookie: session=aX92…&lt;br&gt;HttpOnly; Secure; SameSite=Lax" style="html=1;endArrow=block;endSize=10;strokeWidth=1.5;labelBackgroundColor=#ffffff;fontSize=10;dashed=1" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="540" y="205" as="sourcePoint"/>
+            <mxPoint x="140" y="205" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a4" value="④ GET /dashboard — Cookie: session=aX92…&lt;br&gt;(browser attaches it automatically)" style="html=1;endArrow=block;endSize=10;strokeWidth=1.5;labelBackgroundColor=#ffffff;fontSize=10" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="140" y="255" as="sourcePoint"/>
+            <mxPoint x="540" y="255" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a5" value="⑤ GET aX92… → {alice} → 200" style="html=1;endArrow=block;endSize=10;strokeWidth=1.5;labelBackgroundColor=#ffffff;fontSize=10" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="540" y="290" as="sourcePoint"/>
+            <mxPoint x="935" y="290" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="evil" value="&lt;b&gt;evil.com&lt;/b&gt;&lt;br&gt;(attacker site)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="60" y="380" width="160" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="victim" value="&lt;b&gt;Victim's browser&lt;/b&gt;&lt;br&gt;(still logged in to bank.com)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="460" y="380" width="180" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="bank" value="&lt;b&gt;bank.com server&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="850" y="380" width="170" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="c1" value="① bait link →&lt;br&gt;evil.com page loads" style="html=1;endArrow=block;endSize=10;strokeWidth=1.5;labelBackgroundColor=#ffffff;fontSize=10" edge="1" source="evil" target="victim" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="c2" value="② hidden form auto-POSTs&lt;br&gt;to bank.com/transfer" style="html=1;endArrow=block;endSize=10;strokeWidth=1.5;labelBackgroundColor=#ffffff;fontSize=10" edge="1" source="victim" target="bank" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="0" y="-18" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c3" value="③ browser attaches the session cookie —&lt;br&gt;bank sees an authenticated request ✗" style="html=1;endArrow=block;endSize=10;strokeWidth=2;strokeColor=#b85450;labelBackgroundColor=#ffffff;fontSize=10;dashed=1" edge="1" source="bank" target="victim" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-40" y="55" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cookieflow" value="&lt;b&gt;Cookie: session=aX92…&lt;/b&gt;&lt;br&gt;attached by the browser —&lt;br&gt;not by the attacker's intent" style="shape=note;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="60" y="500" width="260" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="defense" value="&lt;b&gt;DEFENSES&lt;/b&gt;&lt;br&gt;· &lt;b&gt;SameSite=Lax/Strict&lt;/b&gt; — cookie not sent on cross-site POSTs&lt;br&gt;· &lt;b&gt;synchronizer CSRF token&lt;/b&gt; — proves request came from your page&lt;br&gt;· &lt;b&gt;Origin / Sec-Fetch-Site check&lt;/b&gt; — server-side origin validation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=left;spacingLeft=10" vertex="1" parent="1">
+          <mxGeometry x="450" y="500" width="570" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="insight" value="&lt;b&gt;Key insight:&lt;/b&gt; CSRF works because cookies are attached by ambient browser behavior —&lt;br&gt;the request never needed the attacker's code to run in your origin." style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="60" y="600" width="560" height="65" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

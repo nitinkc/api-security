@@ -1,0 +1,49 @@
+<mxfile host="Electron">
+  <diagram id="basic-auth" name="Basic-Auth-Flow">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="560" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="ll_c" value="&lt;b&gt;Client&lt;/b&gt;" style="shape=umlLifeline;perimeter=lifelinePerimeter;html=1;container=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="100" y="40" width="160" height="430" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_s" value="&lt;b&gt;Server&lt;/b&gt;" style="shape=umlLifeline;perimeter=lifelinePerimeter;html=1;container=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="540" y="40" width="160" height="430" as="geometry"/>
+        </mxCell>
+        <mxCell id="m1" value="① GET /api/resource&lt;br&gt;(no credentials)" style="html=1;endArrow=block;endSize=10;strokeWidth=1.5;labelBackgroundColor=#ffffff;fontSize=10" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="180" y="110" as="sourcePoint"/>
+            <mxPoint x="620" y="110" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m2" value="② 401 + WWW-Authenticate:&lt;br&gt;Basic realm=&amp;quot;api&amp;quot;" style="html=1;endArrow=block;endSize=10;strokeWidth=1.5;labelBackgroundColor=#ffffff;fontSize=10;dashed=1" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="620" y="165" as="sourcePoint"/>
+            <mxPoint x="180" y="165" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="note_c" value="client collects user:pass&lt;br&gt;→ base64(user:pass)" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="40" y="200" width="220" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="m3" value="③ GET /api/resource&lt;br&gt;Authorization: Basic YWxpY2U6czNjcmV0" style="html=1;endArrow=block;endSize=10;strokeWidth=1.5;labelBackgroundColor=#ffffff;fontSize=10" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="180" y="290" as="sourcePoint"/>
+            <mxPoint x="620" y="290" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="note_s" value="base64-decode →&lt;br&gt;constant-time compare&lt;br&gt;against hashed password" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="590" y="320" width="200" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="m4" value="④ 200 OK" style="html=1;endArrow=block;endSize=10;strokeWidth=1.5;labelBackgroundColor=#ffffff;fontSize=10;dashed=1" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="620" y="410" as="sourcePoint"/>
+            <mxPoint x="180" y="410" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="warn" value="⚠ &lt;b&gt;base64 = encoding, not encryption&lt;/b&gt;&lt;br&gt;YWxpY2U6czNjcmV0 decodes to &amp;quot;alice:s3cret&amp;quot; in one step —&lt;br&gt;credentials are effectively plaintext without TLS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="160" y="480" width="540" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

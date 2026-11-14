@@ -8,26 +8,9 @@ hands the browser a **session ID cookie**. Every subsequent request carries
 the cookie automatically; the server looks up the session to identify the
 user.
 
-```mermaid
-sequenceDiagram
-    participant B as Browser
-    participant S as Server
-    participant D as Session Store<br>(Redis / DB)
+![Session lifecycle (left) and the CSRF attack it enables (right) — cookies are attached by ambient browser behavior, which is exactly what SameSite, CSRF tokens, and Origin checks defend](../images/session-csrf.svg){ loading=lazy }
 
-    B->>S: POST /login {user, pass}
-    S->>S: Verify credentials
-    S->>D: CREATE session {id: "aX92..", user: "alice", ttl: 30min}
-    S-->>B: Set-Cookie: session=aX92..; HttpOnly; Secure; SameSite=Lax
-
-    B->>S: GET /dashboard<br>Cookie: session=aX92..
-    S->>D: GET session aX92..
-    D-->>S: {user: "alice", ...}
-    S-->>B: 200 OK
-
-    B->>S: POST /logout
-    S->>D: DELETE session aX92..
-    S-->>B: Set-Cookie: session=; Max-Age=0
-```
+*Editable source: `docs/diagrams/session-csrf.drawio`*
 
 ## Cookie attributes — the security surface
 
