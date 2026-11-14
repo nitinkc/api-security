@@ -2,7 +2,7 @@ site_name: API Security — Authentication
 site_description: A language-agnostic field guide to API authentication schemes
 docs_dir: docs
 site_url: https://nitinkc.github.io/api-security/
-repo_url: https://github.com/nitinkc/api-security.git
+repo_url: https://github.com/nitinkc/api-security
 
 theme:
   name: material
