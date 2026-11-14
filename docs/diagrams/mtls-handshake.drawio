@@ -1,0 +1,32 @@
+<mxfile host="Electron">
+  <diagram id="mtls-handshake" name="mTLS-Handshake">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="480" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="cl" value="&lt;b&gt;Client / workload&lt;/b&gt;&lt;br&gt;&lt;font face=&quot;Courier New&quot;&gt;spiffe://prod/frontend&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="200" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="sv" value="&lt;b&gt;Server&lt;/b&gt;&lt;br&gt;&lt;font face=&quot;Courier New&quot;&gt;spiffe://prod/payments&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="830" y="60" width="200" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="s1" value="1 ClientHello" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;fontSize=10;labelBackgroundColor=#ffffff" edge="1" source="cl" target="sv" parent="1"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="160" y="150"/><mxPoint x="930" y="150"/></Array></mxGeometry></mxCell>
+        <mxCell id="s2" value="2 ServerHello + server cert chain + CertificateRequest" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;fontSize=10;labelBackgroundColor=#ffffff" edge="1" source="sv" target="cl" parent="1"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="930" y="185"/><mxPoint x="160" y="185"/></Array></mxGeometry></mxCell>
+        <mxCell id="s3" value="3 client verifies server chain vs trust bundle" style="text;html=1;fontSize=10;align=left;fontColor=#555555" vertex="1" parent="1">
+          <mxGeometry x="300" y="200" width="300" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="s4" value="4 client cert chain + CertificateVerify&lt;br&gt;(signature proves private key possession)" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;fontSize=10;labelBackgroundColor=#ffffff" edge="1" source="cl" target="sv" parent="1"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="160" y="255"/><mxPoint x="930" y="255"/></Array></mxGeometry></mxCell>
+        <mxCell id="s5" value="5 server verifies client chain + checks SAN/SPIFFE ID vs allowlist" style="text;html=1;fontSize=10;align=left;fontColor=#555555" vertex="1" parent="1">
+          <mxGeometry x="320" y="285" width="480" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="s6" value="6 encrypted channel — both sides authenticated" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;startArrow=block;strokeWidth=2;strokeColor=#82b366;fontSize=10;labelBackgroundColor=#ffffff" edge="1" source="cl" target="sv" parent="1"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="160" y="340"/><mxPoint x="930" y="340"/></Array></mxGeometry></mxCell>
+        <mxCell id="vs" value="&lt;b&gt;vs plain TLS&lt;/b&gt;&lt;br&gt;&lt;br&gt;TLS: server proves identity only&lt;br&gt;client auth → app-layer token&lt;br&gt;&lt;br&gt;&lt;b&gt;mTLS: client identity in the handshake&lt;/b&gt;&lt;br&gt;before any app data flows&lt;br&gt;nothing bearer-shaped to steal/replay" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;verticalAlign=top;spacingTop=6" vertex="1" parent="1">
+          <mxGeometry x="60" y="390" width="470" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="scale" value="&lt;b&gt;Scaling it: workload identity&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;SPIFFE&lt;/b&gt; — naming: &lt;font face=&quot;Courier New&quot;&gt;spiffe://env/service&lt;/font&gt; in cert SAN&lt;br&gt;&lt;b&gt;SPIRE&lt;/b&gt; — attests workload, issues short-lived SVIDs&lt;br&gt;&lt;b&gt;Service mesh&lt;/b&gt; — automates issue/rotate/verify per hop&lt;br&gt;&lt;br&gt;short cert lifetimes = rotation &lt;i&gt;is&lt;/i&gt; the revocation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;verticalAlign=top;spacingTop=6" vertex="1" parent="1">
+          <mxGeometry x="580" y="390" width="470" height="130" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

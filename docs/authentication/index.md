@@ -17,3 +17,8 @@ schemes directly:
 | [JWT](jwt.md) | Self-contained signed claims; verified without a server lookup |
 | [OAuth 2.0](oauth.md) | Delegated authorization framework issuing access tokens |
 | [Session Auth](session-auth.md) | Stateful server-side session referenced by a cookie |
+| [MFA](mfa.md) | Two+ factor categories at login; `acr`/`amr` claims carry the result to APIs |
+| [Enterprise SSO](enterprise-sso.md) | SAML/OIDC federation plus LDAP/AD/Kerberos directory backends |
+| [Passkeys & WebAuthn](passkeys.md) | Origin-bound public-key credentials — phishing-resistant by construction |
+| [Mutual TLS](mtls.md) | Both parties present certificates; workload identity via SPIFFE/SPIRE |
+| [Request Signing](request-signing.md) | HMAC over a canonical request — webhook verification and replay defense |

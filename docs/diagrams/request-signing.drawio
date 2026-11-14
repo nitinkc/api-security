@@ -1,0 +1,55 @@
+<mxfile host="Electron">
+  <diagram id="request-signing" name="Request-Signing">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="500" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="cl" value="&lt;b&gt;Client&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="90" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="canon" value="&lt;b&gt;Canonical request&lt;/b&gt;&lt;br&gt;&lt;font face=&quot;Courier New&quot;&gt;METHOD&lt;br&gt;PATH&lt;br&gt;TIMESTAMP&lt;br&gt;SHA256(BODY)&lt;br&gt;sorted params&lt;br&gt;signed headers&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;verticalAlign=top;spacingTop=6" vertex="1" parent="1">
+          <mxGeometry x="200" y="15" width="160" height="135" as="geometry"/>
+        </mxCell>
+        <mxCell id="hmac" value="&lt;b&gt;HMAC-SHA256&lt;/b&gt;&lt;br&gt;key = shared secret" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="410" y="45" width="140" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="sig" value="&lt;b&gt;signature&lt;/b&gt;&lt;br&gt;+ X-Timestamp&lt;br&gt;+ X-Nonce" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="600" y="45" width="130" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="wire" value="&lt;b&gt;HTTP request&lt;/b&gt;&lt;br&gt;headers carry sig + ts&lt;br&gt;&lt;i&gt;secret never sent&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="780" y="45" width="150" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="sv" value="&lt;b&gt;Server&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="980" y="30" width="90" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=1.5" edge="1" source="cl" target="canon" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=1.5" edge="1" source="canon" target="hmac" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=1.5" edge="1" source="hmac" target="sig" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=1.5" edge="1" source="sig" target="wire" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=1.5" edge="1" source="wire" target="sv" parent="1"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="855" y="140"/><mxPoint x="1025" y="140"/><mxPoint x="1025" y="70"/></Array></mxGeometry></mxCell>
+        <mxCell id="v1" value="&lt;b&gt;1 recompute canonical string&lt;/b&gt;&lt;br&gt;same fields, same order" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="240" y="200" width="200" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="v2" value="&lt;b&gt;2 check timestamp&lt;/b&gt;&lt;br&gt;|now − ts| ≤ 5 min" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="470" y="200" width="200" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="v3" value="&lt;b&gt;3 nonce / event-ID dedup&lt;/b&gt;&lt;br&gt;seen before → reject" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="700" y="200" width="200" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="v4" value="&lt;b&gt;4 constant-time compare&lt;/b&gt;&lt;br&gt;compare_digest, never ==" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="470" y="290" width="200" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="ve1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=1.5" edge="1" source="sv" target="v1" parent="1"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1025" y="170"/><mxPoint x="340" y="170"/></Array></mxGeometry></mxCell>
+        <mxCell id="ve2" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=1.5" edge="1" source="v1" target="v2" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ve3" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=1.5" edge="1" source="v2" target="v3" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ve4" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=1.5" edge="1" source="v2" target="v4" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="replay" value="&lt;b&gt;Replay defense = two layers&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;timestamp&lt;/b&gt; — bounds the window (±5 min)&lt;br&gt;&lt;b&gt;nonce&lt;/b&gt; — makes each signature single-use&lt;br&gt;&lt;br&gt;timestamp alone: 5-minute replay window&lt;br&gt;nonce alone: old captures die anyway — but&lt;br&gt;together they close replay completely" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;verticalAlign=top;spacingTop=6" vertex="1" parent="1">
+          <mxGeometry x="80" y="370" width="440" height="145" as="geometry"/>
+        </mxCell>
+        <mxCell id="use" value="&lt;b&gt;Where it earns its complexity&lt;/b&gt;&lt;br&gt;&lt;br&gt;• webhooks — verify sender before trusting payload&lt;br&gt;• payments / deploy hooks — per-request integrity&lt;br&gt;• AWS SigV4 — the canonicalization reference&lt;br&gt;• server-to-server when bearer token isn't enough&lt;br&gt;&lt;br&gt;&lt;i&gt;not for: public clients (secret ships in binary),&lt;br&gt;non-repudiation (both sides hold the key)&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;verticalAlign=top;spacingTop=6" vertex="1" parent="1">
+          <mxGeometry x="580" y="370" width="460" height="145" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

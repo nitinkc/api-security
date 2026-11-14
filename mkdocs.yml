@@ -1,5 +1,5 @@
-site_name: API Security — Authentication
-site_description: A language-agnostic field guide to API authentication schemes
+site_name: API Security — Authentication & Authorization
+site_description: A language-agnostic field guide to API authentication schemes and authorization patterns
 docs_dir: docs
 site_url: https://nitinkc.github.io/api-security/
 repo_url: https://github.com/nitinkc/api-security
@@ -72,23 +72,13 @@ markdown_extensions:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
-nav:
-  - Home: index.md
-  - Authentication Schemes:
-      - authentication/index.md
-      - Basic Auth: authentication/basic-auth.md
-      - Token Auth: authentication/token-auth.md
-      - JWT: authentication/jwt.md
-      - OAuth 2.0: authentication/oauth.md
-      - Session Auth: authentication/session-auth.md
-  - Comparison & Selection: comparison.md
-  - Security Best Practices: best-practices.md
-  - Standards & References: references.md
-  - Glossary: glossary.md
-  - Knowledge Check: quiz.md
-
 plugins:
   - search
+  - glightbox:
+      zoomable: true
+      draggable: true
+      skip_classes:
+        - no-lightbox
   - mkdocs_quiz:
       show_progress: true
       auto_submit: true
@@ -97,3 +87,54 @@ plugins:
 
 extra:
   generator: false
+
+nav:
+  - Home:
+      - Home: index.md
+      - Comparison & Selection: comparison.md
+      - Security Best Practices: best-practices.md
+      - Standards & References: references.md
+  - Authentication:
+      - authentication/index.md
+      - Basic Auth: authentication/basic-auth.md
+      - Token Auth: authentication/token-auth.md
+      - JWT: authentication/jwt.md
+      - OAuth 2.0: authentication/oauth.md
+      - Session Auth: authentication/session-auth.md
+      - MFA: authentication/mfa.md
+      - Enterprise SSO: authentication/enterprise-sso.md
+      - Passkeys & WebAuthn: authentication/passkeys.md
+      - Mutual TLS: authentication/mtls.md
+      - Request Signing: authentication/request-signing.md
+  - Authorization:
+      - authorization/index.md
+      - Access-Control Models: authorization/models.md
+      - Scopes & Claims: authorization/scopes-claims.md
+      - Object & Function Level: authorization/object-level.md
+      - Policy Engines & Enforcement: authorization/policy-engines.md
+      - Multi-Tenancy & Delegation: authorization/multi-tenancy.md
+      - Testing & Pitfalls: authorization/testing.md
+      - "Worked Example: RBAC API": authorization/rbac-design.md
+  - Knowledge Check:
+      - quiz/index.md
+      - Authentication:
+          - Basic Auth: quiz/basic-auth.md
+          - Token Auth & API Keys: quiz/token-auth.md
+          - JWT: quiz/jwt.md
+          - OAuth 2.0: quiz/oauth.md
+          - Session Auth: quiz/session-auth.md
+          - MFA: quiz/mfa.md
+          - Enterprise SSO: quiz/enterprise-sso.md
+          - Passkeys & WebAuthn: quiz/passkeys.md
+          - Mutual TLS: quiz/mtls.md
+          - Request Signing: quiz/request-signing.md
+      - Authorization:
+          - Access-Control Models: quiz/models.md
+          - Scopes & Claims: quiz/scopes-claims.md
+          - Object & Function Level: quiz/object-level.md
+          - Policy Engines & Enforcement: quiz/policy-engines.md
+          - Multi-Tenancy & Delegation: quiz/multi-tenancy.md
+          - Testing & Pitfalls: quiz/testing.md
+          - "Worked Example: RBAC API": quiz/rbac-design.md
+      - Cross-cutting: quiz/cross-cutting.md
+  - Glossary: glossary.md

@@ -1,0 +1,68 @@
+<mxfile host="Electron">
+  <diagram id="authz-decision-flow" name="Authz-Decision-Flow">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1120" pageHeight="420" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="req" value="&lt;b&gt;Request&lt;/b&gt;&lt;br&gt;+ credential" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="20" y="60" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="q1" value="&lt;b&gt;Authenticated?&lt;/b&gt;&lt;br&gt;who are you" style="rhombus;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="180" y="40" width="160" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="q2" value="&lt;b&gt;Function allowed?&lt;/b&gt;&lt;br&gt;scope / role" style="rhombus;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="380" y="40" width="160" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="q3" value="&lt;b&gt;Object allowed?&lt;/b&gt;&lt;br&gt;owner / tenant /&lt;br&gt;relation" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="580" y="40" width="160" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="flt" value="&lt;b&gt;Filter properties&lt;/b&gt;&lt;br&gt;writable fields in,&lt;br&gt;visible fields out" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="780" y="55" width="150" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="ok" value="&lt;b&gt;200 OK&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="970" y="65" width="110" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="f1" value="&lt;b&gt;401&lt;/b&gt; Unauthorized" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="200" y="200" width="120" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="f2" value="&lt;b&gt;403&lt;/b&gt; Forbidden" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="400" y="200" width="120" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="f3" value="&lt;b&gt;404&lt;/b&gt; (hide existence)&lt;br&gt;or &lt;b&gt;403&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="600" y="200" width="120" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="f4" value="unknown fields&lt;br&gt;rejected / stripped" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="795" y="200" width="120" height="45" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="l1" value="&lt;b&gt;Authentication&lt;/b&gt;&lt;br&gt;OWASP API2" style="text;html=1;fontSize=10;align=center;fontColor=#555555" vertex="1" parent="1">
+          <mxGeometry x="190" y="260" width="140" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="l2" value="&lt;b&gt;Function level&lt;/b&gt;&lt;br&gt;BFLA — OWASP API5" style="text;html=1;fontSize=10;align=center;fontColor=#555555" vertex="1" parent="1">
+          <mxGeometry x="390" y="260" width="140" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="l3" value="&lt;b&gt;Object level&lt;/b&gt;&lt;br&gt;BOLA — OWASP API1" style="text;html=1;fontSize=10;align=center;fontColor=#555555" vertex="1" parent="1">
+          <mxGeometry x="590" y="260" width="140" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="l4" value="&lt;b&gt;Property level&lt;/b&gt;&lt;br&gt;BOPLA — OWASP API3" style="text;html=1;fontSize=10;align=center;fontColor=#555555" vertex="1" parent="1">
+          <mxGeometry x="785" y="260" width="140" height="35" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeWidth=1.5" edge="1" source="req" target="q1" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" value="yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#ffffff" edge="1" source="q1" target="q2" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" value="yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#ffffff" edge="1" source="q2" target="q3" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" value="yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#ffffff" edge="1" source="q3" target="flt" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeWidth=1.5" edge="1" source="flt" target="ok" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="n1" value="no" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeWidth=1.5;strokeColor=#b85450;fontSize=10;labelBackgroundColor=#ffffff" edge="1" source="q1" target="f1" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="n2" value="no" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeWidth=1.5;strokeColor=#b85450;fontSize=10;labelBackgroundColor=#ffffff" edge="1" source="q2" target="f2" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="n3" value="no" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeWidth=1.5;strokeColor=#b85450;fontSize=10;labelBackgroundColor=#ffffff" edge="1" source="q3" target="f3" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="n4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeWidth=1.5;strokeColor=#b85450;dashed=1" edge="1" source="flt" target="f4" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="take" value="&lt;b&gt;Every request, every gate, deny by default.&lt;/b&gt; A valid token only clears the first gate —&lt;br&gt;most API breaches happen because the object or property gate was never built." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="240" y="320" width="620" height="55" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

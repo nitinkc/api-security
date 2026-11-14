@@ -1,7 +1,8 @@
 # Security Best Practices
 
-Cross-cutting controls that apply to **every** authentication scheme in
-this guide. Scheme-specific checklists live on each scheme's page.
+Cross-cutting controls that apply to **every** authentication scheme and
+authorization pattern in this guide. Topic-specific checklists live on each
+page.
 
 ## Transport security
 
@@ -51,13 +52,26 @@ pipelines:
 
 ## Authentication ≠ authorization
 
-Every scheme in this guide proves *who* the caller is. Separately enforce:
+Every scheme in this guide proves *who* the caller is. Separately enforce
+(details in [Authorization](authorization/index.md)):
 
+- [x] **Deny by default** — unmapped routes, unknown roles, and policy
+      engine errors all result in 403.
 - [x] **Scope/role checks on every endpoint** — a valid token for
-      `read:photos` must not pass `POST /admin`.
+      `read:photos` must not pass `POST /admin`
+      ([function level](authorization/object-level.md)).
 - [x] **Object-level authorization** — "user is authenticated" doesn't
       mean "user may read *this* record" (IDOR/BOLA — OWASP API #1).
+- [x] **Property-level authorization** — explicit input/output DTOs; no
+      mass assignment, no raw entity serialization.
+- [x] **Identity and tenant from the credential** — never from
+      `user_id`/`tenant_id` in the request
+      ([multi-tenancy](authorization/multi-tenancy.md)).
+- [x] **Validate `aud`** — reject tokens issued for a different API
+      ([scopes & claims](authorization/scopes-claims.md)).
 - [x] **Least privilege** — issue the narrowest scopes the client needs.
+- [x] **Test with the wrong user** — two-user and cross-tenant tests in CI
+      ([testing](authorization/testing.md)).
 
 ## Monitoring & incident response
 

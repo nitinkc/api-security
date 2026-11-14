@@ -1,0 +1,83 @@
+<mxfile host="Electron">
+  <diagram id="bola-bfla-bopla" name="BOLA-BFLA-BOPLA">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1000" pageHeight="600" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="h1" value="&lt;b&gt;BOLA&lt;/b&gt; — API1&lt;br&gt;object level" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="20" y="20" width="300" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="h2" value="&lt;b&gt;BFLA&lt;/b&gt; — API5&lt;br&gt;function level" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="350" y="20" width="300" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="h3" value="&lt;b&gt;BOPLA&lt;/b&gt; — API3&lt;br&gt;property level" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="680" y="20" width="300" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="r1" value="GET /invoices/1002&lt;br&gt;Authorization: Bearer &amp;lt;alice&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;fontFamily=Courier New" vertex="1" parent="1">
+          <mxGeometry x="20" y="100" width="300" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="r2" value="DELETE /users/77&lt;br&gt;Authorization: Bearer &amp;lt;member&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;fontFamily=Courier New" vertex="1" parent="1">
+          <mxGeometry x="350" y="100" width="300" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="r3" value="PATCH /users/me&lt;br&gt;{&amp;quot;name&amp;quot;:&amp;quot;Alice&amp;quot;,&amp;quot;role&amp;quot;:&amp;quot;admin&amp;quot;}" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;fontFamily=Courier New" vertex="1" parent="1">
+          <mxGeometry x="680" y="100" width="300" height="55" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="a1" value="✓ token valid — &amp;quot;alice is logged in&amp;quot;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="20" y="185" width="300" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="a2" value="✓ token valid — UI hides the delete button" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="350" y="185" width="300" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="a3" value="✓ token valid — body bound onto User entity" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="680" y="185" width="300" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="m1" value="✗ never asked: &lt;b&gt;is invoice 1002 alice's?&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b85450;dashed=1;fontSize=10;fontColor=#b85450" vertex="1" parent="1">
+          <mxGeometry x="20" y="255" width="300" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="m2" value="✗ never asked: &lt;b&gt;may a member delete users?&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b85450;dashed=1;fontSize=10;fontColor=#b85450" vertex="1" parent="1">
+          <mxGeometry x="350" y="255" width="300" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="m3" value="✗ never asked: &lt;b&gt;may alice write &amp;quot;role&amp;quot;?&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b85450;dashed=1;fontSize=10;fontColor=#b85450" vertex="1" parent="1">
+          <mxGeometry x="680" y="255" width="300" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="o1" value="&lt;b&gt;200&lt;/b&gt; — Bob's invoice leaked" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="20" y="325" width="300" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="o2" value="&lt;b&gt;204&lt;/b&gt; — another user deleted" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="350" y="325" width="300" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="o3" value="&lt;b&gt;200&lt;/b&gt; — alice is now admin" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="680" y="325" width="300" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="x1" value="&lt;b&gt;Fix:&lt;/b&gt; scope the query by caller&lt;br&gt;&lt;font face=&quot;Courier New&quot;&gt;WHERE id = :id AND owner_id = :me&lt;/font&gt;&lt;br&gt;→ 404" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="20" y="400" width="300" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="x2" value="&lt;b&gt;Fix:&lt;/b&gt; permission check on every route,&lt;br&gt;&lt;font face=&quot;Courier New&quot;&gt;users:delete&lt;/font&gt;, deny-by-default router&lt;br&gt;→ 403" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="350" y="400" width="300" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="x3" value="&lt;b&gt;Fix:&lt;/b&gt; explicit input / output DTOs,&lt;br&gt;unknown fields rejected&lt;br&gt;→ 422 / field ignored" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="680" y="400" width="300" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block" edge="1" source="r1" target="a1" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block" edge="1" source="a1" target="m1" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#b85450" edge="1" source="m1" target="o1" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block" edge="1" source="r2" target="a2" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block" edge="1" source="a2" target="m2" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#b85450" edge="1" source="m2" target="o2" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block" edge="1" source="r3" target="a3" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block" edge="1" source="a3" target="m3" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#b85450" edge="1" source="m3" target="o3" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="take" value="&lt;b&gt;Same root cause, three granularities:&lt;/b&gt; the request was &lt;i&gt;authenticated&lt;/i&gt;,&lt;br&gt;so the code assumed it was &lt;i&gt;authorized&lt;/i&gt; — for the operation, the record, or the field." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="180" y="500" width="640" height="55" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,34 @@
+<mxfile host="Electron">
+  <diagram id="mfa-factors" name="MFA-Factors">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="900" pageHeight="420" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="t1" value="&lt;b&gt;THE THREE FACTOR CATEGORIES&lt;/b&gt;" style="text;html=1;fontSize=12;align=center" vertex="1" parent="1">
+          <mxGeometry x="0" y="8" width="900" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="know" value="&lt;b&gt;KNOWLEDGE — something you know&lt;/b&gt;&lt;br&gt;&lt;br&gt;password&lt;br&gt;PIN&lt;br&gt;security question&lt;br&gt;&lt;br&gt;&lt;i&gt;phishable, reusable, guessable&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;verticalAlign=top;spacingTop=6" vertex="1" parent="1">
+          <mxGeometry x="40" y="45" width="250" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="have" value="&lt;b&gt;POSSESSION — something you have&lt;/b&gt;&lt;br&gt;&lt;br&gt;TOTP authenticator&lt;br&gt;push approval / number matching&lt;br&gt;hardware key / passkey&lt;br&gt;SMS / email code&lt;br&gt;&lt;br&gt;&lt;i&gt;phishable codes; phishing-resistant keys&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;verticalAlign=top;spacingTop=6" vertex="1" parent="1">
+          <mxGeometry x="330" y="45" width="250" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="are" value="&lt;b&gt;INHERENCE — something you are&lt;/b&gt;&lt;br&gt;&lt;br&gt;fingerprint&lt;br&gt;face&lt;br&gt;behavioral&lt;br&gt;&lt;br&gt;&lt;i&gt;unlocks a possession key — never crosses the wire&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;verticalAlign=top;spacingTop=6" vertex="1" parent="1">
+          <mxGeometry x="620" y="45" width="250" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" value="2 of the same category ≠ MFA" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=open;dashed=1;strokeColor=#b85450;fontSize=10;labelBackgroundColor=#ffffff" edge="1" source="know" target="have" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" value="biometric unlocks the key" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=open;dashed=1;strokeColor=#666666;fontSize=10;labelBackgroundColor=#ffffff" edge="1" source="are" target="have" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="bar" value="&lt;b&gt;PHISHING RESISTANCE →&lt;/b&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;SMS / email OTP · TOTP · push · push + number match · &lt;b&gt;WebAuthn / passkey&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="60" y="235" width="780" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="api" value="&lt;b&gt;What the API sees&lt;/b&gt;&lt;br&gt;not factors — claims:&lt;br&gt;&lt;font face=&quot;Courier New&quot;&gt;amr: [pwd, hwk]&lt;br&gt;acr: step-up&lt;br&gt;auth_time: 1731600000&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="180" y="320" width="250" height="85" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" value="MFA happens at login —&lt;br&gt;result rides the token" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#ffffff" edge="1" source="bar" target="api" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="note" value="&lt;b&gt;Rule of thumb&lt;/b&gt; — factors must cross categories: password + TOTP = MFA. Password + security question = one phishing page harvests both." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="470" y="320" width="400" height="85" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,56 @@
+<mxfile host="Electron">
+  <diagram id="two-user-test" name="Two-User-Test">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1000" pageHeight="420" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="s1" value="&lt;b&gt;① Act as User A&lt;/b&gt;&lt;br&gt;create invoice, project,&lt;br&gt;document …" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="20" y="60" width="170" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="s2" value="&lt;b&gt;② Capture&lt;/b&gt;&lt;br&gt;every request A makes&lt;br&gt;(IDs, verbs, bodies)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="230" y="60" width="170" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="s3" value="&lt;b&gt;③ Replay&lt;/b&gt;&lt;br&gt;same requests with&lt;br&gt;&lt;b&gt;User B's&lt;/b&gt; token" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="440" y="60" width="170" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="q" value="&lt;b&gt;Response?&lt;/b&gt;" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="650" y="45" width="130" height="105" as="geometry"/>
+        </mxCell>
+        <mxCell id="ok" value="&lt;b&gt;403 / 404&lt;/b&gt;&lt;br&gt;✓ pass" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="830" y="30" width="150" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="bad" value="&lt;b&gt;2xx&lt;/b&gt;&lt;br&gt;✗ BOLA / BFLA finding" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="830" y="115" width="150" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeWidth=1.5" edge="1" source="s1" target="s2" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeWidth=1.5" edge="1" source="s2" target="s3" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeWidth=1.5" edge="1" source="s3" target="q" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeWidth=1.5;strokeColor=#82b366" edge="1" source="q" target="ok" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeWidth=1.5;strokeColor=#b85450" edge="1" source="q" target="bad" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="vt" value="&lt;b&gt;Repeat step ③ with each variation&lt;/b&gt;" style="text;html=1;fontSize=11;align=left" vertex="1" parent="1">
+          <mxGeometry x="20" y="190" width="400" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="v1" value="&lt;b&gt;other tenant&lt;/b&gt;&lt;br&gt;user in a different org" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d79b00;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="20" y="220" width="180" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="v2" value="&lt;b&gt;lower role&lt;/b&gt;&lt;br&gt;member instead of admin" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d79b00;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="215" y="220" width="180" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="v3" value="&lt;b&gt;anonymous&lt;/b&gt;&lt;br&gt;no token → expect 401" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d79b00;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="410" y="220" width="180" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="v4" value="&lt;b&gt;every verb&lt;/b&gt;&lt;br&gt;GET works → try PUT / DELETE" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d79b00;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="605" y="220" width="180" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="v5" value="&lt;b&gt;privileged fields&lt;/b&gt;&lt;br&gt;add role / owner_id to body" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d79b00;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="800" y="220" width="180" height="55" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="take" value="&lt;b&gt;Happy-path tests never find authorization bugs&lt;/b&gt; — the tester owns the data.&lt;br&gt;Run the wrong-user replay for every endpoint, in CI, from a generated matrix." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="180" y="315" width="640" height="55" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

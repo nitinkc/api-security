@@ -28,7 +28,19 @@ definition inline.
 | Refresh token | Longer-lived credential exchanged for new access tokens |
 | ID token | OIDC token carrying identity claims to the *client*, never to APIs |
 
-## OAuth & federation
+## Federation & directory
+
+| Term | Meaning |
+| --- | --- |
+| SAML | XML-based SSO federation — assertions relayed through the browser to an ACS |
+| ACS | Assertion Consumer Service — the SP endpoint that receives SAML assertions; must be exact-matched |
+| XSW | XML Signature Wrapping — relocating the signed node so the forged assertion is consumed |
+| JIT provisioning | Auto-creating accounts on first SSO login — default them to least privilege |
+| LDAP / LDAPS | Directory protocol for user/group lookup and bind auth — only over TLS |
+| AD / Kerberos | Microsoft's directory and its ticket-based internal SSO (SPNEGO/`Negotiate`) |
+| IdP-initiated vs SP-initiated | Who starts the SSO flow — IdP-initiated skips the request and is easier to abuse |
+
+## OAuth
 
 | Term | Meaning |
 | --- | --- |
@@ -57,10 +69,44 @@ definition inline.
 
 | Term | Meaning |
 | --- | --- |
-| RBAC / ABAC / ACL | Role-, attribute-, or list-based authorization models |
 | MFA / TOTP | Multi-factor auth; the time-based one-time-password flavor |
+| Passkey / WebAuthn | Origin-bound public-key login — private key never leaves the device |
+| FIDO2 / CTAP | The standard family / the device↔authenticator protocol behind passkeys |
+| Relying party (RP) | The application a passkey or SAML assertion authenticates to |
+| `acr` / `amr` | Token claims carrying authentication assurance level / methods used |
+| signCount | Authenticator's clone-detection counter — regression means a copied key |
+| Step-up authentication | Re-proving a factor inside a live session for high-risk actions |
+| mTLS / SVID | Cert-on-both-sides TLS / the short-lived workload cert SPIRE issues |
+| SPIFFE / SPIRE | Workload-identity URI standard / the runtime that issues SVIDs |
+| SAN | Subject Alternative Name — cert field that carries SPIFFE IDs |
+| Request signing | HMAC over a canonical request — proves origin + integrity without sending the secret |
+| Nonce / event-ID dedup | Seen-once store that closes the replay window inside a timestamp |
 | IAM | The umbrella discipline for identities, credentials, and permissions |
 | SSO | Single Sign-On — one authentication event, many applications |
+
+## Authorization
+
+| Term | Meaning |
+| --- | --- |
+| Authorization | Deciding what an authenticated caller may do — distinct from proving who they are |
+| 401 vs 403 | 401 = not authenticated; 403 = authenticated but not allowed |
+| RBAC / ABAC / ACL | Role-, attribute-, or list-based authorization models |
+| ReBAC | Relationship-based access control — permissions derived from a graph (Zanzibar-style) |
+| Least privilege | Grant only the permissions, scope, and lifetime required for the task |
+| Deny by default | Access is refused unless a rule explicitly allows it |
+| BOLA / IDOR | Accessing another user's object by changing its ID — OWASP API #1 |
+| BFLA | Calling an operation (often admin) the caller's role shouldn't allow — OWASP API #5 |
+| BOPLA | Reading or writing object fields the caller shouldn't — OWASP API #3 |
+| Mass assignment | Binding a request body onto a model so the caller sets privileged fields |
+| PEP / PDP | Enforcement point that intercepts requests / decision point that evaluates policy |
+| PIP / PAP | Attribute source for decisions / where policies are authored and managed |
+| OPA / Rego | Open Policy Agent and its policy language |
+| Cedar | Analyzable authorization policy language (Amazon Verified Permissions) |
+| Audience (`aud`) | Token claim naming the API a token is valid for |
+| Token exchange | RFC 8693 — swap a token for a narrower one to call a downstream service |
+| `act` claim | Records the actor in a delegated token (who is acting for `sub`) |
+| RLS | Row-level security — database-enforced row filtering, e.g. by tenant |
+| Impersonation | An operator acting as a user; must be scoped, time-boxed, and audited |
 
 ## Crypto hygiene
 
